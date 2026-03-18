@@ -1,6 +1,3 @@
-def saludar(nombre):
-    return f"Hola, {nombre}!"
-
 def autenticar_usuario(username, password):
     usuarios = {
         "admin": "1234",
