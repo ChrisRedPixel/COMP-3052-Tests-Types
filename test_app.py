@@ -42,3 +42,34 @@ def test_estructura_salida():
  assert "success" in resultado
  assert "message" in resultado
  assert "response_time_ms" in resultado
+
+#CP-08: Tiempo Real
+import time
+def test_tiempo_respuesta_login_exitoso():
+ inicio = time.perf_counter()
+ resultado = autenticar_usuario("admin", "1234")
+ fin = time.perf_counter()
+ tiempo_ms = (fin - inicio) * 1000
+ assert resultado["success"] == True
+ assert tiempo_ms < 500
+
+#CP-09: Tiempo Reportado por el Sistema
+def test_tiempo_reportado_por_el_sistema():
+ resultado = autenticar_usuario("javier", "python123")
+ assert resultado["response_time_ms"] < 500
+
+#CP-10: Validación de Campos Vacíos
+def test_validacion_campos_vacios():
+ resultado = autenticar_usuario("", "")
+ assert resultado["success"] == False
+ assert resultado["message"] == "Usuario y contraseña son requeridos"
+
+#CP-11: Tiempo Reportado con Contraseña Incorrecta
+def test_tiempo_reportado_con_contrasena_incorrecta():
+ resultado = autenticar_usuario("admin", "9999")
+ assert resultado["response_time_ms"] < 500
+
+#CP-12: Tiempo Reportado con Usuario Inexistente
+def test_tiempo_reportado_con_usuario_inexistente():
+ resultado = autenticar_usuario("pedro", "1234")
+ assert resultado["response_time_ms"] < 500
