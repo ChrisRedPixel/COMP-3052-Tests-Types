@@ -1,2 +1,2 @@
-pip install pytest
 pytest
+pytest-cov
