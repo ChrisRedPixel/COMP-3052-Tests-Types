@@ -1,3 +1,0 @@
-git add .
-git commit -m "Fix: remove invalid python version"
-git push
