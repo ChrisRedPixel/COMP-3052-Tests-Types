@@ -2,7 +2,7 @@ from app import autenticar_usuario
 
 #CP-01: Login exitoso
 def test_login_exitoso():
- resultado = autenticar_usuario("admin", "1234")
+ resultado = autenticar_usuario("ADMIN", "1234")
  assert resultado["success"] == True
  assert resultado["message"] == "Acceso concedido"
  assert resultado["response_time_ms"] > 0
